@@ -31,9 +31,9 @@ $ jekyll serve
 
 制作和改造jekyll模版需要一些基础知识，比如`liquid`,还有jekyll提供的一下接口。大家可以参考一下文档：
 
-* [jekyll 中文文档]{http://jekyll.bootcss.com/docs/home/}
-* [jekyll-bootstrap 文档]{http://jekyllbootstrap.com/usage/jekyll-quick-start.html}
-* [liquid for Designer]{https://github.com/Shopify/liquid/wiki/Liquid-for-Designers}
+* [jekyll 中文文档](http://jekyll.bootcss.com/docs/home/)
+* [jekyll-bootstrap 文档](http://jekyllbootstrap.com/usage/jekyll-quick-start.html)
+* [liquid for Designer](https://github.com/Shopify/liquid/wiki/Liquid-for-Designers)
 
-如果你喜欢我正在使用的这个模版，你可以[fork me in github]{}.再改造为适合自己的。或者直接开始写作吧
+如果你喜欢我正在使用的这个模版，你可以[fork me in github](https://github.com/carney520/nasha-with-jb).再改造为适合自己的。或者直接开始写作吧
 
