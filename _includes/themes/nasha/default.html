@@ -3,7 +3,11 @@
 <head>
 	<meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- article meta data -->
 	<meta name="author" content="{{ site.author.name }}">
+	<meta name="keywords" content="{% for tag in page.tags %}{{tag}},{% endfor %}">
+	<meta name="description" content="{% if page.description %}{{page.description}}{% endif %}">
+
     <!-- Enable responsive viewport -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -58,7 +62,7 @@
 	</main>
 	<footer class="footer">
 		<div class="container">
-			<p>&copy; {{site.time | date: '%Y'}} {{site.author.name}}.Base on <a href="">Jekyll Bootstrap</a></p>
+			<p>&copy; {{site.time | date: '%Y'}} {{site.author.name}}.Base on <a href="https://github.com/plusjade/jekyll-bootstrap">Jekyll Bootstrap</a></p>
 		</div>
 	</footer>
 	</div><!-- container -->
