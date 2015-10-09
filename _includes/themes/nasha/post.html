@@ -1,0 +1,75 @@
+<div class="post-header">
+	<h1>{{page.title}}</h1>
+	<!-- post date -->
+	<div class="post-date">
+		{{page.date | date_to_string | upcase}}
+	</div>
+	<!-- description -->
+	{% if page.description %}
+	 <div class="post-description">
+	   {{page.description | strip_html}}
+	 </div>
+	 {% endif %}
+</div>
+<div class="post-content">
+	{{content}}
+</div>
+ <!-- meta data -->
+ <div class="text-center">
+		{% unless page.categories == empty %}
+		 {% for category in page.categories %}
+		 <a href="{{BASE_PATH}}{{site.JB.categories_path}}#{{category}}-ref"> <span class="glyphicon glyphicon-book"></span> {{category}} </a>
+		 {% endfor %}
+	{% endunless %}
+	{% unless page.tags == empty %}
+	{% for tag in page.tags %}
+	<a href="{{BASE_PATH}}{{site.JB.tags_path}}#{{tag}}-ref"> <span class="glyphicon glyphicon-tag"></span> {{tag}} </a>
+	{% endfor %}
+	{% endunless %}
+ </div>
+
+<a class="return-top" href="#">Top</a>
+<hr>
+
+<!-- pagination -->
+<nav>
+	<ul class="pager">
+		{% if page.previous %}
+		<li>
+			<a href="{{BASE_PATH}}{{page.previous.url}}" alt="{{page.previous.title}}">Prev</a>
+		</li>
+		{% else %}
+		<li class="disabled"><a>Prev</a></li>
+		{% endif %}
+		{% if page.next %}
+		<li>
+			<a href="{{BASE_PATH}}{{page.next.url}}" alt="{{page.next.title}}">Next</a>
+		</li>
+		{% else %}
+		<li class="disabled"><a>Next</a></li>
+		{% endif %}
+	</ul>
+</nav>
+{% include JB/comments %}
+
+<! -- read more -->
+<div class="post-extend">
+	<h2>Read More</h2>
+	<!-- the similar articles -->
+	<div class="row">
+	<ul class="col-xs-12">
+		{% for tag in page.tags %}
+			{% for post in site.tags[tag] limit:3 %}
+			  {% unless post.url == page.url %}
+				<li class="post-item">
+					<div class="hidden-xs post-item-date">
+						{{post.date | date_to_string }}
+					</div>
+					<h2><a href="{{BASE_PATH}}{{post.url}}">{{post.title}}</a></h2>
+				</li>
+				{% endunless %}
+			{% endfor %}
+		{% endfor %}
+	</ul>
+	</div>
+</div>

@@ -6,10 +6,20 @@ group: navigation
 ---
 {% include JB/setup %}
 
-<ul class="tag_box inline">
-  {% assign tags_list = site.tags %}  
-  {% include JB/tags_list %}
-</ul>
+
+<!-- tags list -->
+<div class="tags-list">
+	{% assign tags_list = site.tags %}
+	{%if tags_list.first[0] == null %}	
+	  {% for tag in tags_list %} 
+    	<a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag }}-ref" class="tags-list-item">{{ tag }}</a>
+		{% endfor %}
+	{% else %}
+    {% for tag in tags_list %} 
+    	<a href="{{ BASE_PATH }}{{ site.JB.tags_path }}#{{ tag[0] }}-ref" class="tags-list-item">{{ tag[0] }} </a>
+    {% endfor %}
+	{% endif %}
+</div>
 
 
 {% for tag in site.tags %} 

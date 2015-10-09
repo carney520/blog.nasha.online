@@ -6,10 +6,11 @@ group: navigation
 ---
 {% include JB/setup %}
 
-<ul class="tag_box inline">
-  {% assign categories_list = site.categories %}
-  {% include JB/categories_list %}
-</ul>
+<div class="tags-list">
+	{% for category in site.categories %}
+	<a href="{{BASE_PATH}}{{site.JB.categories_path}}#{{category[0]}}-ref" class="tags-list-item">{{category[0]}}</a>
+	{% endfor %}
+</div>
 
 
 {% for category in site.categories %} 
