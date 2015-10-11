@@ -4,12 +4,12 @@ title: Home
 ---
 {% include JB/setup %}
 
-<ul class="posts">
+<ul class="post-item-group">
   {% for post in site.posts %}
 	<!-- list all post -->
 	<li class="post-item">
 	  <!-- page date -->
-		<div class="post-item-date">
+		<div class="post-item-date hidden-xs">
 		{{post.date | date_to_long_string}}
 		</div>
 

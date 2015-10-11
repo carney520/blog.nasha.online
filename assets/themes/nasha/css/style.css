@@ -28,6 +28,30 @@ body{
 	color:#708090;
 }
 
+.navbar-toggle{
+	font-size:19px;
+	margin-top:1px;
+}
+
+.navbar-header{
+	margin-top:5px;
+}
+
+.navbar-brand{
+	color:#708090;
+	font-size:20px;
+}
+
+@media (max-width: 768px){
+	.navbar-header{
+		border-bottom:1px solid #eee !important;
+	}	
+}
+
+header{
+	margin-bottom:50px;
+}
+
 .pull-center{
 	margin-left:auto !important;
 	margin-right:auto !important;
@@ -41,8 +65,9 @@ body{
 	/*
 	 *background-color:#EAEAE8;
 	 */
-	padding:30px;
-	border-radius:5px;
+	/*
+	 *padding:30px;
+	 */
 }
 
 /*footer */
@@ -91,7 +116,9 @@ body{
 
 .post-content{
 	margin-bottom:50px;
-	padding:10px;
+	/*
+	 *padding:10px;
+	 */
 	font-family: 'Helvetica Neue', helvetica, Arial, sans-serif;
 	font-weight:300;
 	font-size:16px;
@@ -108,11 +135,16 @@ body{
 
 /* post-item for index.html */
 
+.post-item-group{
+	padding:0;
+}
 .post-item{
 	border-bottom:1px solid #eee;
 	list-style:none;
 	padding:0 8px 15px 8px;
+	width:100%;
 }
+
 .post-item h2 a{
 	font-family: 'Helvetica Neue', helvetica, Arial, sans-serif;
 	font-size:19px;
