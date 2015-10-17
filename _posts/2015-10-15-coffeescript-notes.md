@@ -14,7 +14,7 @@ tags: [javascript,coffeescript]
 * TOC
 {:toc}
 
-<i>注：本文需要一定的JS基础</i>
+<i>注：本文需要一定的javascript基础</i>
 
 我接触coffeescript的原因是coffeescript是Ruby on Rails的默认javascript引擎。不为别的，就冲着他的语法像Ruby我就想学他。我不确定coffeescript在严格意义上是否能称为一种语言，coffeescript的功能非常简单，只要花半天或许更少时间就可以基本掌握 它。前提是你要熟悉javascript，如果再熟悉**Ruby**就更得心应手了。因为coffeescript的很多语法都是借鉴Ruby还有Python。
 使用coffeescript可以编写更少更优美的代码,同时可以弥补javascript一些不足（主要是语法上，不是功能上，因为coffeescript
@@ -24,8 +24,8 @@ just javascript。比如类的实现，coffeescript只是使用的了更多的�
 
 
 ##Note 1 空格和分号
-取经之python，coffeescript使用空格缩进取代了花括号,即在CS中空格是有意义的，比如下面定义一个函数。
-同样，分号在CS中是*非必需的*
+取经之python，coffeescript使用空格缩进取代了花括号,即在coffeescript中空格是有意义的，比如下面定义一个函数。
+同样，分号在coffeescript中是*非必需的*
 {% highlight coffeescript linenos %}
 square = (x) -> 
   x * x
@@ -47,7 +47,7 @@ square 4
 {% endhighlight %}
 
 ##Note 2 函数和括号
-CS使用`->`来取代`function`关键字。这个语法类似于Ruby中的lambda表达式
+coffeescript使用`->`来取代`function`关键字。这个语法类似于Ruby中的lambda表达式
 同样函数调用使的括号是*可有可无*的。
 虽然省略括号可以让代码更加整洁，但是也可能让人有点混乱。我觉得尽量加上括号为好，特别是在参数比较复杂的时候。有时候看别人的代码会弄不清哪个是变量哪个是函数。即使在Ruby下也是如此。
 
@@ -77,10 +77,10 @@ myFunc = ->
 {% endhighlight %}
 
 由上可知，所有的变量包括函数引用变量都会使用var进行定义。这是javascript的最佳实践。
-另外可以看到，CS没有对a变量再次进行定义，因为CS在进行编译时，已经看到之前定义的变量a，它会假定你会在myFunc函数中继续使用该变量。
+另外可以看到，coffeescript没有对a变量再次进行定义，因为coffeescript在进行编译时，已经看到之前定义的变量a，它会假定你会在myFunc函数中继续使用该变量。
 
 ##Note 4 匿名封装器函数
-前面看到，CS编译后的代码段都会被包含在`(function(){ //.. }).call(this);`这样的匿名封装函数中。这是因为，这样就可以在其内部随意的定义和操作而不会污染全局作用域。
+前面看到，coffeescript编译后的代码段都会被包含在`(function(){ //.. }).call(this);`这样的匿名封装函数中。这是因为，这样就可以在其内部随意的定义和操作而不会污染全局作用域。
 这是javascript中一个重要的变成技巧。
 如果想要将变量或者函数暴露给外部的作用域，可以将其绑定到`this`变量中。这就是`call`函数的作用了，call和apply函数可以让函数绑定到特定的上下文中执行，比如这里传入的`this`变量就是指向*全局执行环境*的。
 
@@ -118,7 +118,7 @@ window.sayHi = ->
 
 ##Note 5 插值语法
 在Ruby中，在字符串中插入变量可以这样子：`"hello my name is #{name},I'm from #{country}"`
-CS也可以这样，而且它还可以是任意的有效的CS代码：
+coffeescript也可以这样，而且它还可以是任意的有效的coffeescript代码：
 
 {% highlight coffeescript linenos %}
 text = "Add numbers : #{1 + 1}"
@@ -136,7 +136,7 @@ console.log "It's a beautiful #{if day is 'sunday' then day else "Day"}"
 
 
 ##Note 6 heredoc and comment
-在Ruby还有其他脚本语言中都有heredoc来输入跨行文字，CS也添加了这个功能
+在Ruby还有其他脚本语言中都有heredoc来输入跨行文字，coffeescript也添加了这个功能
 
 {% highlight coffeescript linenos %}
 html = """
@@ -161,13 +161,13 @@ Released under the MIT License
 
 
 ##Note 6 操作符和控制结构
-CS扩展操作符：
+coffeescript扩展操作符：
 
 <table class="table table-bordered table-hover">
   <thead class="thead-inverse">
     <tr>
-      <th>CS</th>
-      <th>JS/description</th>
+      <th>coffeescript</th>
+      <th>javascript/description</th>
     </tr>
   </thead>
   <tbody>
@@ -229,7 +229,7 @@ CS扩展操作符：
     </tr>
     <tr>
       <td>in</td>
-      <td>no JS equivalent</td>
+      <td>no javascript equivalent</td>
     </tr>
     <tr>
       <td>a > b > c </td>
@@ -239,20 +239,20 @@ CS扩展操作符：
 </table>
 
 ###条件控制符
-CS 使用if／else／else if这样的语法来控制条件语句
+coffeescript 使用if／else／else if这样的语法来控制条件语句
 另外还引入了unless语句：
 {% highlight coffeescript linenos %}
 unless you.love(me)
   letMeAlone()
 {% endhighlight %}
 
-> 在CS中不支持三元表达式（？：）但支持內联条件语句和循环语句：
+> 在coffeescript中不支持三元表达式（？：）但支持內联条件语句和循环语句：
 > `letMeAlone() unless you.love(me)`
 > 或者 `date = if friday then sue else jill`
 > 当语句为单行时，要加上then
 
 存在操作符。
-CS借鉴了Ruby引入了存在操作符`?`
+coffeescript借鉴了Ruby引入了存在操作符`?`
 {% highlight coffeescript linenos %}
 if html?
   console.log html
@@ -265,7 +265,7 @@ if html?
 {% endhighlight %}
 
 ###switch语句
-CS的switch语句同Ruby
+coffeescript的switch语句同Ruby
 {% highlight coffeescript linenos %}
 today="Monday"
 switch today
@@ -299,12 +299,12 @@ foo()
 }).call(this);
 {% endhighlight %}
 
-> 前面说到，调用函数时，括号是可有可无的，但是CS要求在调用*无参函数*时必须显示加入括号，以表调用，不然他就是一个普通的变量.在这里笔者再次强调一下，在函数调用时最好是显式地使用括号，我觉得这样可读性更好(特别是把参数放置在多行)，而且可以减少一些bug。
+> 前面说到，调用函数时，括号是可有可无的，但是coffeescript要求在调用*无参函数*时必须显示加入括号，以表调用，不然他就是一个普通的变量.在这里笔者再次强调一下，在函数调用时最好是显式地使用括号，我觉得这样可读性更好(特别是把参数放置在多行)，而且可以减少一些bug。
 
-CS的函数会默认返回最后一个语句的。不管它是什么，比如上面的`return console.log("hello world")`.这个特性也是借鉴Ruby的。如果要显式返回一个值，请用`return`关键字
+coffeescript的函数会默认返回最后一个语句的。不管它是什么，比如上面的`return console.log("hello world")`.这个特性也是借鉴Ruby的。如果要显式返回一个值，请用`return`关键字
 
 ###默认参数
-在CS中给函数赋予默认参数非常简单：
+在coffeescript中给函数赋予默认参数非常简单：
 {% highlight coffeescript linenos %}
 link = (url,text=url) ->
   "<a href='#{url}'>#{text}</a>"
@@ -328,7 +328,7 @@ console.log(link("http://www.google.com","Google")); #=><a href='http://www.goog
 {% endhighlight %}
 
 ###不定参数
-在CS中要定义不定参数要使用*splat*操作符，即`...`。主要附加在参数名后方。
+在coffeescript中要定义不定参数要使用*splat*操作符，即`...`。主要附加在参数名后方。
 
 {% highlight coffeescript linenos %}
 race = (winner, runners...) ->
@@ -336,11 +336,11 @@ race = (winner, runners...) ->
 {% endhighlight %}
 runners可以接受任意数量的参数即（0到N），它将作为一个数组
 
-> 不像Ruby，CS中的变参可以放在参数列表的任意位置。如`(a,b...,c)`,如果传入一个参数，a将被赋值，如果传入连个够参数，a、c将被赋值，如果3个以上的参数，首尾分别赋予a、c，其余的付给b
+> 不像Ruby，coffeescript中的变参可以放在参数列表的任意位置。如`(a,b...,c)`,如果传入一个参数，a将被赋值，如果传入连个够参数，a、c将被赋值，如果3个以上的参数，首尾分别赋予a、c，其余的付给b
 
 ##Note 8 集合与对象
 ###数组
-CS中的数组和JS的没什么区别，CS提供了便捷的操作方法。
+coffeescript中的数组和javascript的没什么区别，coffeescript提供了便捷的操作方法。
 *in关键字*
 要检测数组是否包含使用`in`关键字：
 
@@ -367,7 +367,7 @@ b = 5
 }).call(this);
 {% endhighlight %}
 
-CS没有类似JS提供单行对多个值赋值的方法,如`a=7,b=10`这样的语法是错误的。但是可以通过解构赋值来实现：
+coffeescript没有类似javascript提供单行对多个值赋值的方法,如`a=7,b=10`这样的语法是错误的。但是可以通过解构赋值来实现：
 {% highlight coffeescript linenos %}
 [a,b,c] = [1,2,3]
 {% endhighlight %}
@@ -390,9 +390,9 @@ console.log c #=>5
 {% endhighlight %}
 
 *Range*
-CS参考Ruby也引入了Range（区间）比如`[1..5]`等价于`[1,2,3,4,5]`,而`[1...5]`则等价于`[1,2,3,4]`即不包含尾数.也可以反序如`[5..1]`等价于`[5,4,3,2,1]`.
+coffeescript参考Ruby也引入了Range（区间）比如`[1..5]`等价于`[1,2,3,4,5]`,而`[1...5]`则等价于`[1,2,3,4]`即不包含尾数.也可以反序如`[5..1]`等价于`[5,4,3,2,1]`.
 
-> 遗憾的是CS的Range不支持字符形式的如，`['a'..'z']`
+> 遗憾的是coffeescript的Range不支持字符形式的如，`['a'..'z']`
 
 这些是作用于**数组字面量**。当Range作用于数组变量时,即**数组切片**，更能显现出它的威力。
 比如用Range来获取数组的一部分：
@@ -412,8 +412,8 @@ numbers[0..1] = [1]  #=>[ 1, 2, -3, -4, -5, -6, 7, 8, 9 ] 自动缩减
 {% endhighlight %}
 
 ###对象（散列）
-JS的对象比较简单，其实就是其他语言中的哈希表。之所以称为对象，在笔者看来是因为它可以简单地封装属性和方法。在JS中函数就像一个普通的数据类型，可以简单地付给一个变量。在一个散列表中封装了一个对象模型的的属性和一些操作，这就是最简单的“对象”了。在C语言编写时，我也经常使用struct来封装一个数据对象的属性和操作。我们将它称为”面向对象编程模式”。当然这里只是说对象，至于面向对象的概念早就不这么简单了。
-在CS中，对象的花括号是可以省略的：
+javascript的对象比较简单，其实就是其他语言中的哈希表。之所以称为对象，在笔者看来是因为它可以简单地封装属性和方法。在javascript中函数就像一个普通的数据类型，可以简单地付给一个变量。在一个散列表中封装了一个对象模型的的属性和一些操作，这就是最简单的“对象”了。在C语言编写时，我也经常使用struct来封装一个数据对象的属性和操作。我们将它称为”面向对象编程模式”。当然这里只是说对象，至于面向对象的概念早就不这么简单了。
+在coffeescript中，对象的花括号是可以省略的：
 {% highlight coffeescript linenos %}
 obj =
   firstName: "lee"
@@ -436,7 +436,7 @@ console.log obj
 }).call(this);
 {% endhighlight %}
 *@操作符*
-在Ruby对象方法中是使用@variable这样的形式来获取和设置对象的属性的。CS也copy了这个语法。在CS的它只不过是this的简写：
+在Ruby对象方法中是使用@variable这样的形式来获取和设置对象的属性的。coffeescript也copy了这个语法。在coffeescript的它只不过是this的简写：
 {% highlight coffeescript linenos %}
 obj =
   firstname:"lee"
@@ -466,7 +466,7 @@ console.log obj.print()
 
 ###遍历
 *数组遍历*
-CS遍历数组主要使用`for .. in ..`语法。
+coffeescript遍历数组主要使用`for .. in ..`语法。
 {% highlight coffeescript linenos %}
 
 letters = ["a","b","c"]
@@ -489,7 +489,7 @@ for number in numbers by 2 when number < 5
 {% endhighlight %}
 
 *对象遍历*
-CS遍历对象主要使用`for key,value of object`的形式
+coffeescript遍历对象主要使用`for key,value of object`的形式
 {% highlight coffeescript linenos %}
 person =
   firstname:"lee"
@@ -503,7 +503,7 @@ for key,value of person
 > 遍历对象不支持`by`关键字,可以使用`when`
 
 使用`own`关键字遍历非继承属性
-在JS中，可以使用prototype函数给所有系统对象添加函数或者属性,比如：
+在javascript中，可以使用prototype函数给所有系统对象添加函数或者属性,比如：
 {% highlight coffeescript linenos %}
 Object.prototype.birthdate=new Date()
 person =
@@ -533,7 +533,7 @@ for i in [0..5]
     console.log i
   ,1)
 {% endhighlight %}
-JS代码：
+javascript代码：
 {% highlight javascript linenos %}
 
 (function() {
@@ -566,11 +566,11 @@ JS代码：
 }).call(this);
 {% endhighlight %}
 
-因为JS中的函数是按值传递的，所以每个匿名函数都会保存一个特定时刻变量值的副本，加上闭包就可以正常输出了。
+因为javascript中的函数是按值传递的，所以每个匿名函数都会保存一个特定时刻变量值的副本，加上闭包就可以正常输出了。
 
-> 关于闭包的话题，可以查阅《JS高级编程》第七章
+> 关于闭包的话题，可以查阅《javascript高级编程》第七章
 
-CS提供了一个关键字`do`来简化这个过程：
+coffeescript提供了一个关键字`do`来简化这个过程：
 {% highlight coffeescript linenos %}
 
 for i in [0..5]
@@ -599,9 +599,9 @@ for i in [0..5]
 {% endhighlight %}
 
 ##Note 8 类
-> 建议在阅读本节前熟悉JS面向对象原理
+> 建议在阅读本节前熟悉javascript面向对象原理
 
-JS对面向对象的支持非常弱，就比如构建一个对象就有好几种方法，比如构造函数法，原型方法。要实现继承也是非常繁琐的，根本就不能好好的玩耍。这时候CS出现了，有时候我们应该不应该陷入语言的细节里面，CS让我们能够轻松地构造类和实现继承。当然这些都是基于JS，在这里重申，JS做不到的事情，CS也是鞭长莫及的。
+javascript对面向对象的支持非常弱，就比如构建一个对象就有好几种方法，比如构造函数法，原型方法。要实现继承也是非常繁琐的，根本就不能好好的玩耍。这时候coffeescript出现了，有时候我们应该不应该陷入语言的细节里面，coffeescript让我们能够轻松地构造类和实现继承。当然这些都是基于javascript，在这里重申，javascript做不到的事情，coffeescript也是鞭长莫及的。
 
 ###定义类
 使用`class`关键字定义一个“类”
@@ -610,7 +610,7 @@ class Person
 
 person1 = new Person
 {% endhighlight %}
-JS代码：
+javascript代码：
 {% highlight javascript linenos %}
 
 (function() {
@@ -627,10 +627,10 @@ JS代码：
 
 }).call(this);
 {% endhighlight %}
-Person函数就是Person类的构造函数，在JS中，构造函数和和普通函数没什么区别，真正起作用的是`new`关键字.它主要用于创建一个对象，并调用指定的函数，为该对象创建属性和方法
+Person函数就是Person类的构造函数，在javascript中，构造函数和和普通函数没什么区别，真正起作用的是`new`关键字.它主要用于创建一个对象，并调用指定的函数，为该对象创建属性和方法
 
 ###构造函数
-按CS的约定是在class内定义一个`constructor`函数如
+按coffeescript的约定是在class内定义一个`constructor`函数如
 {% highlight coffeescript linenos %}
 class Person
   constructor: (name,age)->
@@ -640,7 +640,7 @@ class Person
 person1 = new Person("carney","20")
 console.log person1
 {% endhighlight %}
-JS代码：
+javascript代码：
 {% highlight javascript linenos %}
 (function() {
   var Person, person1;
@@ -662,7 +662,7 @@ JS代码：
 }).call(this);
 {% endhighlight %}
 
-在constructor函数中定义的语句都会被放进JS的构造函数(Person)中。在构造函数中定义的属性和方法是*实例变量*.仿照Ruby的语法，这里使用`@`操作符进行定义。
+在constructor函数中定义的语句都会被放进javascript的构造函数(Person)中。在构造函数中定义的属性和方法是*实例变量*.仿照Ruby的语法，这里使用`@`操作符进行定义。
 实例变量和方法是归每个特定的实例所有的。后面会介绍*类变量*.
 
 ###定义方法
@@ -680,7 +680,7 @@ person1.introduct()
 
 {% endhighlight %}
 
-JS代码：
+javascript代码：
 {% highlight javascript linenos %}
 
 (function() {
@@ -708,12 +708,12 @@ JS代码：
 
 }).call(this);
 {% endhighlight %}
-CS把方法定义在*原型对象*上，让实例对象进行共享,每个实例对象都会引用一个原型对象，即`prototype`.实例对象可以访问原型对象上的属性和方法，如果是同一种类型的实例对象他们引用的是同一个原型对象。比如我们在Object原型对象上绑定一个sayhi方法，那么所有实例对象都可以访问这个方法。关于原型链的问题不是本文讨论的话题。
+coffeescript把方法定义在*原型对象*上，让实例对象进行共享,每个实例对象都会引用一个原型对象，即`prototype`.实例对象可以访问原型对象上的属性和方法，如果是同一种类型的实例对象他们引用的是同一个原型对象。比如我们在Object原型对象上绑定一个sayhi方法，那么所有实例对象都可以访问这个方法。关于原型链的问题不是本文讨论的话题。
 
 也可以在构造函数里面定义方法，不过不推荐这么做，因为它会给每一实例都定义函数。这会浪费内存。也没有什么好处。
 
 ###继承
-CS的继承使用类似JAVA的语法
+coffeescript的继承使用类似JAVA的语法
 {% highlight coffeescript linenos %}
 
 class Person
@@ -733,7 +733,7 @@ console.log(new Student("carney",21,2012254107))
 {% endhighlight %}
 > 调用super时无须显式传递参数，它会将函数中的所有参数都传递给父类同名方法。要是想传入特定参数可以手动指定
 
-CS实现继承的原理也不是很复杂，主要是把父类所有非继承而来的属性和方法都赋值到子类上来，然后再对原型对象进行嫁接。
+coffeescript实现继承的原理也不是很复杂，主要是把父类所有非继承而来的属性和方法都赋值到子类上来，然后再对原型对象进行嫁接。
 
 {% highlight javascript linenos %}
 
@@ -820,7 +820,7 @@ Test.sayHi()   #=> hi carney
 > 其实它们就是普通对象里面的属性和方法。
 
 ##Note 9 原型函数
-CS提供了一个简洁的符合来替换`prototype`函数，比如：
+coffeescript提供了一个简洁的符合来替换`prototype`函数，比如：
 {% highlight coffeescript linenos %}
 Array::size = -> @length
 {% endhighlight %}
@@ -853,7 +853,7 @@ foo(bar.sayhi) #start \n hi undefined \n end
 {% endhighlight %}
 
 在foo函数调用中发现name属性是undefined。这是怎么回事呢？
-在JS中函数是在特定的上下文环境中执行的，这个上下文的显式体现就是`this`和`arguments`.尚且把它们上面的foo函数展开等价于：
+在javascript中函数是在特定的上下文环境中执行的，这个上下文的显式体现就是`this`和`arguments`.尚且把它们上面的foo函数展开等价于：
 {% highlight javascript linenos %}
   foo = function() {
     console.log("start");
@@ -882,7 +882,7 @@ bar.sayhi()
 foo(bar.sayhi,bar)
 {% endhighlight %}
 
-像前面的一样，CS也提供了一个便捷的操作符来实现上下文绑定：
+像前面的一样，coffeescript也提供了一个便捷的操作符来实现上下文绑定：
 {% highlight coffeescript linenos %}
 foo = (callback) ->
   console.log "start"
@@ -935,7 +935,7 @@ class Bar
     console.log "hi #{@name}"
 {% endhighlight %}
 
-JS:
+javascript:
 {% highlight javascript linenos %}
 (function() {
   var Bar,
@@ -957,3 +957,17 @@ JS:
 
 }).call(this);
 {% endhighlight %}
+
+##Note 11 浏览器中运行coffeescript
+一般不建议在浏览器中直接使用coffeescript，因为他的效率会比较低，推荐在本地编译后再上传到网上。但是每次都是要编译后才能再改动网站的js文件，显得有些麻烦。特别实在学习实验的时候。
+我们需要下载一个文件用于在线编译coffeescript，[点击下载](http://coffee-script.org/extras/coffee-script.js)
+然后在网页中引入编译器代码：
+{% highlight html linenos %}
+<script src="coffee-script.js"></script> <!-- 编译器 -->
+<script type="text/coffeescript">
+  #coffeescript 代码
+  console.log "hello coffeescript!"
+</script>
+{% endhighlight %}
+ 
+> 这种只在学习的实验的时候用，另外一种方法是使用`coffee`命令 `-w` 选项侦测coffeescript文件的变动，让其自动编译至目标代码
