@@ -38,11 +38,11 @@ square 4
 {% highlight javascript linenos %}
 (function(){
   var square;
-	square = function(x){
-		return x * x;
-	};
+  square = function(x){
+    return x * x;
+  };
 
-	square(4);
+  square(4);
 }).call(this);
 {% endhighlight %}
 
@@ -60,19 +60,19 @@ javascript的作用域经常是bug的来源，因为它存在两种定义的方�
 a = 'A'
 myFunc = ->
   a = 'AA'
-	b = 'b'
+  b = 'b'
 {% endhighlight %}
 
 编译后
 {% highlight javascript linenos %}
 (function(){
   var a,myFunc;
-	a = 'A';
-	myFunc = function(){
-	  var b';
-		a = 'AA';
-		return b = 'b';
-	};
+  a = 'A';
+  myFunc = function(){
+    var b';
+    a = 'AA';
+    return b = 'b';
+  };
 }).call(this);
 {% endhighlight %}
 
@@ -106,9 +106,9 @@ window.sayHi = ->
 
 {% highlight javascript linenos %}
 (function(){
-	this.sayHi = function(){
+  this.sayHi = function(){
     return console.log("hello world");
-	};
+  };
 }).call(this);
 {% endhighlight %}
 
@@ -129,8 +129,8 @@ console.log "It's a beautiful #{if day is 'sunday' then day else "Day"}"
 {% highlight javascript linenos %}
 (function(){
   var day,text;
-	text = "Add number: " + (1 + 1);
-	console.log("It's a beautiful " + (day === 'sunday' ? day : "Day"));
+  text = "Add number: " + (1 + 1);
+  console.log("It's a beautiful " + (day === 'sunday' ? day : "Day"));
 }).call(this);
 {% endhighlight %}
 
@@ -140,15 +140,15 @@ console.log "It's a beautiful #{if day is 'sunday' then day else "Day"}"
 
 {% highlight coffeescript linenos %}
 html = """
-		 <strong>
-			cup of coffeescript
-		</strong>
-		 """
+     <strong>
+      cup of coffeescript
+    </strong>
+     """
 {% endhighlight %}
 
 {% highlight javascript linenos %}
   var html;
-	html = "<strong>\n  cup of coffeescript\n</strong>";
+  html = "<strong>\n  cup of coffeescript\n</strong>";
 {% endhighlight %}
 
 多行注释使用`###`
@@ -162,79 +162,80 @@ Released under the MIT License
 
 ##Note 6 操作符和控制结构
 CS扩展操作符：
+
 <table class="table table-bordered table-hover">
-	<thead class="thead-inverse">
-		<tr>
-			<th>CS</th>
-			<th>JS/description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>?=</td>
-			<td>如果不存在，不存在则赋值</td>
-		</tr>
-		<tr>
-			<td>||=</td>
-			<td>判断条件为假则赋值</td>
-		</tr>
-		<tr>
-			<td>&&=</td>
-			<td>判断为真则赋值</td>
-		</tr>
-		<tr>
-			<td>a ** b</td>
-			<td>Math.pow(a,b)</td>
-		</tr>
-		<tr>
-			<td>a // b</td>
-			<td>Math.floor(a/b)</td>
-		</tr>
-		<tr>
-			<td>is</td>
-			<td>===</td>
-		</tr>
-		<tr>
-			<td>isnt</td>
-			<td>!==</td>
-		</tr>
-		<tr>
-			<td>not</td>
-			<td>!</td>
-		</tr>
-		<tr>
-			<td>and</td>
-			<td>&&</td>
-		</tr>
-		<tr>
-			<td>or</td>
-			<td>||</td>
-		</tr>
-		<tr>
-			<td>true,yes,on</td>
-			<td>true</td>
-		</tr>
-		<tr>
-			<td>false,no,off</td>
-			<td>false</td>
-		</tr>
-		<tr>
-			<td>@,this</td>
-			<td>this</td>
-		</tr>
-		<tr>
-			<td>of</td>
-			<td>in</td>
-		</tr>
-		<tr>
-			<td>in</td>
-			<td>no JS equivalent</td>
-		</tr>
-		<tr>
-			<td>a > b > c </td>
-			<td>链式比较：a > b && b > c</td>
-		</tr>
-	</tbody>
+  <thead class="thead-inverse">
+    <tr>
+      <th>CS</th>
+      <th>JS/description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>?=</td>
+      <td>如果不存在，不存在则赋值</td>
+    </tr>
+    <tr>
+      <td>||=</td>
+      <td>判断条件为假则赋值</td>
+    </tr>
+    <tr>
+      <td>&&=</td>
+      <td>判断为真则赋值</td>
+    </tr>
+    <tr>
+      <td>a ** b</td>
+      <td>Math.pow(a,b)</td>
+    </tr>
+    <tr>
+      <td>a // b</td>
+      <td>Math.floor(a/b)</td>
+    </tr>
+    <tr>
+      <td>is</td>
+      <td>===</td>
+    </tr>
+    <tr>
+      <td>isnt</td>
+      <td>!==</td>
+    </tr>
+    <tr>
+      <td>not</td>
+      <td>!</td>
+    </tr>
+    <tr>
+      <td>and</td>
+      <td>&&</td>
+    </tr>
+    <tr>
+      <td>or</td>
+      <td>||</td>
+    </tr>
+    <tr>
+      <td>true,yes,on</td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <td>false,no,off</td>
+      <td>false</td>
+    </tr>
+    <tr>
+      <td>@,this</td>
+      <td>this</td>
+    </tr>
+    <tr>
+      <td>of</td>
+      <td>in</td>
+    </tr>
+    <tr>
+      <td>in</td>
+      <td>no JS equivalent</td>
+    </tr>
+    <tr>
+      <td>a > b > c </td>
+      <td>链式比较：a > b && b > c</td>
+    </tr>
+  </tbody>
 </table>
 
 ###条件控制符
@@ -269,11 +270,11 @@ CS的switch语句同Ruby
 today="Monday"
 switch today
   when "saturday"
-	   console.log "saturday"
-	when "sunday"
-	   console.log "sunday"  #add break automated
-	else      #=>default
-	   "monday"
+     console.log "saturday"
+  when "sunday"
+     console.log "sunday"  #add break automated
+  else      #=>default
+     "monday"
 {% endhighlight %}
 
 
@@ -291,10 +292,10 @@ foo()
 {% highlight javascript linenos %}
 (function(){
   var foo;
-	foo = function(){
-	  return console.log("hello world");
-	};
-	foo();
+  foo = function(){
+    return console.log("hello world");
+  };
+  foo();
 }).call(this);
 {% endhighlight %}
 
@@ -316,11 +317,11 @@ console.log link("http://www.google.com","Google")
 {% highlight javascript linenos %}
 (function(){
   var link;
-	link = function(url,text){
-	  if(text == null)
-		  text = url;
-		return "<a href='" + url + "'>" + text + "</a>";
-	};
+  link = function(url,text){
+    if(text == null)
+      text = url;
+    return "<a href='" + url + "'>" + text + "</a>";
+  };
 console.log(link("http://www.google.com"));      #=><a href='http://www.google.com'>http://www.google.com</a>
 console.log(link("http://www.google.com","Google")); #=><a href='http://www.google.com'>google</a>
 }).call(this);
@@ -361,8 +362,8 @@ b = 5
 {% highlight javascript linenos %}
 (function(){
   var a,b,ref;
-	ref=[b,a];
-	a=ref[0],b=ref[1];
+  ref=[b,a];
+  a=ref[0],b=ref[1];
 }).call(this);
 {% endhighlight %}
 
@@ -374,8 +375,8 @@ CS没有类似JS提供单行对多个值赋值的方法,如`a=7,b=10`这样的�
 {% highlight javascript linenos %}
 (function(){
   var a,b,c,ref;
-	ref=[1,2,3];
-	a=ref[0],b=ref=[1],c=ref[2];
+  ref=[1,2,3];
+  a=ref[0],b=ref=[1],c=ref[2];
 }).call(this);
 {% endhighlight %}
 
@@ -416,7 +417,7 @@ JS的对象比较简单，其实就是其他语言中的哈希表。之所以称
 {% highlight coffeescript linenos %}
 obj =
   firstName: "lee"
-	lastName:  "carney"
+  lastName:  "carney"
 console.log obj
 {% endhighlight %}
 
