@@ -132,6 +132,9 @@ header{
 {
 	font-weight:300;
 }
+.post-content img{
+  width:100%;
+}
 
 /* post-item for index.html */
 
